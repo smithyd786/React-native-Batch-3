@@ -1,37 +1,16 @@
 import { Text, StyleSheet, View } from "react-native"
 import React from "react";
+import Home from "./Screens/Home";
 
 function App() {
   return (
     <>
-      {/* <Text style={{backgroundColor:"red",fontSize:30}}  >
-        Reacty Native class 1werwer
-      </Text>
-      <Text style={styles.mainText} >
-        Reacty Native class 1werwer
-      </Text> */}
+
       <View style={styles.main}>
-        <View style={styles.header}>
-          <Text style={styles.text}>Hello world</Text>
-        </View>
-        {/* <View style={styles.body}>
-          <Text style={styles.text}> Body</Text>
-        </View>
-        <View style={styles.footer}>
-          <Text style={styles.text}>Footer</Text>
-        </View>
+
+        <Home />
       </View>
-      <View style={styles.main2}>
-        <View style={styles.header}>
-          <Text style={styles.text}>header</Text>
-        </View>
-        <View style={styles.body}>
-          <Text style={styles.text}> Body</Text>
-        </View>
-        <View style={styles.footer}>
-          <Text style={styles.text}>Footer</Text>
-        </View> */}
-      </View>
+
 
 
 
@@ -47,7 +26,8 @@ const styles = StyleSheet.create({
   //   fontSize: 30
   // },
   main: {
-    flex: 1
+    flex: 1,
+    backgroundColor:"white"
   },
   main2: {
     flex: 4,
@@ -56,9 +36,9 @@ const styles = StyleSheet.create({
   header: {
     flex: 2,
     backgroundColor: "red",
-      justifyContent:"center",
-      textAlign:"center"
-    
+    justifyContent: "center",
+    textAlign: "center"
+
 
   },
   body: {
