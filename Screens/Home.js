@@ -14,7 +14,6 @@ function Home() {
                    value={name}
                    onChangeText={(e)=>setname(e)}
                     placeholder="enter  Number "
-             
                 />
 
                 <Button title={"SUBMIT"} onPress={()=>ShowData()}></Button>
@@ -28,9 +27,6 @@ function Home() {
                     source={require("../assets/1.jpg")}
                     style={{ height: 400, width: 400 }}
                 />
-
-
-
             </View>
 
         </ScrollView>

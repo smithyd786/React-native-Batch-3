@@ -1,6 +1,8 @@
 import { Text, StyleSheet, View } from "react-native"
 import React from "react";
-import Home from "./Screens/Home";
+import Data from "./Screens/New.js";
+import Slider from "./Screens/Slider.js";
+import Navigation from "./Config/Navigation.js";
 
 function App() {
   return (
@@ -8,7 +10,9 @@ function App() {
 
       <View style={styles.main}>
 
-        <Home />
+        {/* <Data /> */}
+        {/* <Slider/> */}
+        <Navigation/>
       </View>
 
 
