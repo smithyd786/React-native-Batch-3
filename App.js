@@ -3,6 +3,7 @@ import React from "react";
 import Data from "./Screens/New.js";
 import Slider from "./Screens/Slider.js";
 import Navigation from "./Config/Navigation.js";
+import 'react-native-gesture-handler';
 
 function App() {
   return (

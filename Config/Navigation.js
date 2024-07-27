@@ -4,14 +4,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Slider from '../Screens/Slider'
 import Data from "../Screens/New";
 import { View, Text, Image } from 'react-native'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createMaterialTopTabNavigator  } from '@react-navigation/material-top-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
+const Drawer = createDrawerNavigator();
 
 import Tab1 from "../Screens/Tab1";
 import Tab2 from "../Screens/Tab2";
-import Ionicons  from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import { DrawerContent } from "../Screens/drawerContent";
 
-const BottomNavbar = createMaterialTopTabNavigator ()
+const BottomNavbar = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
 function Navigation() {
     return (
@@ -55,7 +59,7 @@ function Navigation() {
                         headerShown: false
 
                     }}
-                    name="Bottom" component={BottomTab} />
+                    name="Drawer" component={DrawerTab} />
 
 
             </Stack.Navigator>
@@ -67,48 +71,58 @@ function Navigation() {
 function BottomTab() {
     return (
         <BottomNavbar.Navigator
-        screenOptions={({ route }) => ({
-         tabBarActiveTintColor:"red",
-         tabBarInactiveTintColor:"white",
-        // tabBarActiveBackgroundColor:"red",
-        tabBarStyle: { 
-            backgroundColor: '#1EFA03',
-            // margin:20,
-            marginLeft:20,
-            marginRight:20,
-            borderRadius:20,
-            borderTopWidth:2,
-            borderTopColor:"red"
-        
-
-          },
-        
-            tabBarIcon:({ focused, color, size })=>{
-                let iconName;
-                if(route.name=="Home"){
-                    iconName = focused ?
-                    "home" :
-                    "home-outline"
+            screenOptions={({ route }) => ({
+                headerShown: false,
+                tabBarActiveTintColor: "red",
+                tabBarInactiveTintColor: "white",
+                // tabBarActiveBackgroundColor:"red",
+                tabBarStyle: {
+                    backgroundColor: '#1EFA03',
+                    // margin:20,
+                    marginLeft: 20,
+                    marginRight: 20,
+                    borderRadius: 20,
+                    borderTopWidth: 2,
+                    borderTopColor: "red"
 
 
+                },
+
+                tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
+                    if (route.name == "Home") {
+                        iconName = focused ?
+                            "home" :
+                            "home-outline"
+
+
+                    }
+                    else if (route.name == "Settings") {
+                        iconName = focused ?
+                            "settings" :
+                            "settings-outline"
+
+                    }
+                    return <Ionicons name={iconName} size={40} color={focused ? "red" : "green"} />
                 }
-                else if(route.name=="Settings"){
-                    iconName = focused ? 
-                    "settings":
-                    "settings-outline"
 
-                }
-                return <Ionicons name={iconName} size={40} color={focused ? "red":"green"}/>
-            }
+            })}
 
-        })}
-        
         >
             <BottomNavbar.Screen name="Home" component={Data} />
             <BottomNavbar.Screen name="Settings" component={Tab2} />
         </BottomNavbar.Navigator>
     )
 
+}
+
+function DrawerTab() {
+    return (
+        <Drawer.Navigator initialRouteName="Drawer2" drawerContent={props => <DrawerContent {...props} />}>
+            <Drawer.Screen name="Drawer2" component={Slider} />
+            <Drawer.Screen name="Drawer1" component={BottomTab} />
+        </Drawer.Navigator>
+    )
 }
 
 export default Navigation

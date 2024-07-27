@@ -1,15 +1,54 @@
 import React, { useEffect, useState } from "react"
 import { View, Text, Image, ScrollView, Dimensions, Button } from 'react-native'
 // import { Button } from "react-native-paper"
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import Swiper from 'react-native-swiper'
 const { width } = Dimensions.get("window")
+
 
 const images = [
     "https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg?uid=R72210616&ga=GA1.2.1859093203.1717504417&semt=sph",
     "https://img.freepik.com/free-vector/web-development-isometric-concept-composition-illustration_1284-55922.jpg?uid=R72210616&ga=GA1.2.1859093203.1717504417&semt=sph",
     "https://img.freepik.com/free-photo/european-union-agency-operator-using-military-tech-green-screen-tablet_482257-89748.jpg?uid=R72210616&ga=GA1.2.1859093203.1717504417&semt=sph"
 ]
+
+
+
 function Slider({ navigation }) {
+    var [file,setfile] = useState("")
+
+
+    const openImageGallery = () => {
+        console.log("ajshdjash")
+    
+
+        const options = {
+            mediaType: 'photo',  // You can use 'photo' or 'video'
+            quality: 0.8,       // Image quality (0 to 1)
+        };
+    
+        launchImageLibrary(options, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled the gallery.');
+            }
+            else if (response.error) {
+                console.log('Camera Error: ', response.error);
+            }
+            else {
+                // Use the image from the camera here
+                console.log('Image URI: ', response.assets[0].uri);
+                setfile(response.assets[0].uri)
+                // setshowprogress(true)
+                // imageupload(response.assets[0].uri)
+    
+            }
+    
+        })
+    
+    
+    }
+
+
     return (
         <View style={{
             flex: 1
@@ -62,12 +101,20 @@ function Slider({ navigation }) {
                 >
 
                     <Button title="Open Screen" onPress={() => {
-                        navigation.navigate("Bottom",{
-                            "name":"new",
-                            "age":20
+                        navigation.navigate("Drawer", {
+                            "name": "new",
+                            "age": 20
                         })
                     }}></Button>
 
+                    {file!=""?
+                    <Image source={{uri:file}} 
+                    style={{width:200,height:200}}
+                    />:<></>}
+
+                    <Button title="Open Gallery" onPress={() => {
+                        openImageGallery()
+                    }}></Button>
                 </View>
             </View>
 
