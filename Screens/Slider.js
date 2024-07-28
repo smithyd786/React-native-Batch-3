@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { View, Text, Image, ScrollView, Dimensions, Button } from 'react-native'
 // import { Button } from "react-native-paper"
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import {Avatar} from "react-native-paper";
 import Swiper from 'react-native-swiper'
 const { width } = Dimensions.get("window")
 
@@ -48,8 +49,33 @@ function Slider({ navigation }) {
     
     }
 
+    const openCamera = () => {
+        const options = {
+            mediaType: 'photo',  // You can use 'photo' or 'video'
+            quality: 0.8,       // Image quality (0 to 1)
+        };
+
+
+        launchCamera(options, (response) => {
+            if (response.didCancel) {
+                console.log('User cancelled the camera.');
+            }
+            else if (response.error) {
+                console.log('Camera Error: ', response.error);
+            }
+            else {
+                // Use the image from the camera here
+                console.log('Image URI: ', response.assets[0].uri);
+                setfile(response.assets[0].uri)
+                // imageupload(response.assets[0].uri)
+
+            }
+
+        })
+    }
 
     return (
+        <ScrollView>
         <View style={{
             flex: 1
         }}>
@@ -108,18 +134,22 @@ function Slider({ navigation }) {
                     }}></Button>
 
                     {file!=""?
-                    <Image source={{uri:file}} 
-                    style={{width:200,height:200}}
-                    />:<></>}
+                                 <Avatar.Image size={100} source={{uri:file}} />
+
+                  :<></>}
 
                     <Button title="Open Gallery" onPress={() => {
                         openImageGallery()
+                    }}></Button>
+                     <Button title="Open cAMERA" onPress={() => {
+                        openCamera()
                     }}></Button>
                 </View>
             </View>
 
 
         </View>
+        </ScrollView>
 
     )
 }

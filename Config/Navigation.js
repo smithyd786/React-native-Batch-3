@@ -14,6 +14,8 @@ import Tab1 from "../Screens/Tab1";
 import Tab2 from "../Screens/Tab2";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { DrawerContent } from "../Screens/drawerContent";
+import YoutubeIframe from "react-native-youtube-iframe";
+import YoutubePlayerComp from "../Screens/youtubePlayer";
 
 const BottomNavbar = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -121,6 +123,8 @@ function DrawerTab() {
         <Drawer.Navigator initialRouteName="Drawer2" drawerContent={props => <DrawerContent {...props} />}>
             <Drawer.Screen name="Drawer2" component={Slider} />
             <Drawer.Screen name="Drawer1" component={BottomTab} />
+            <Drawer.Screen name="Player" component={YoutubePlayerComp} />
+
         </Drawer.Navigator>
     )
 }

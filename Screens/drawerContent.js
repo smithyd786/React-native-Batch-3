@@ -37,31 +37,31 @@ export function DrawerContent(props) {
         <View>
 
           <View>
-            <ImageBackground source={{ uri: 'https://wallpaper-house.com/data/out/12/wallpaper2you_492382.jpg' }} style={{ width: '100%', height: 180,marginTop:'-2%' }}>
+            <ImageBackground source={{ uri: 'https://wallpaper-house.com/data/out/12/wallpaper2you_492382.jpg' }} style={{ width: '100%', height: 180, marginTop: '-2%' }}>
               {/* <Image
                 source={
                 require('../../Images/i11.png')
                 }
                 style={{ width: 150, height: 90, resizeMode: 'contain', marginTop:'12%'}} /> */}
-                 <View style={styles.drawerContent}>
-            <View style={styles.userInfoSection}>
+              <View style={styles.drawerContent}>
+                <View style={styles.userInfoSection}>
 
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                  <View style={{ flexDirection: 'row', marginTop: 10 }}>
 
-                <View style={{ marginLeft: 15, flexDirection: 'column' }}>
-                  <Title style={styles.title}>Ali</Title>
-                  <Caption style={styles.caption}>new</Caption>
+                    <View style={{ marginLeft: 15, flexDirection: 'column' }}>
+                      <Title style={styles.title}>Ali</Title>
+                      <Caption style={styles.caption}>new</Caption>
+                    </View>
+                  </View>
+
                 </View>
+
               </View>
-
-            </View>
-
-          </View>
 
             </ImageBackground>
           </View>
 
-         
+
           <Drawer.Section style={styles.drawerSection} >
             <DrawerItem
               icon={({ color, size }) => (
@@ -71,31 +71,47 @@ export function DrawerContent(props) {
                   size={size}
                 />
               )}
-              label="Home"
+              label="Hosdfsdfsdfme"
               onPress={() => { props.navigation.navigate('Drawer2') }}
             />
 
-            
-              <DrawerItem
-                icon={({ color, size }) => (
-                  <Icon
-                    name="account-outline"
-                    color='brown'
-                    size={size}
 
-                  />
-                )}
-                style={styles.Text}
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icon
+                  name="account-outline"
+                  color='brown'
+                  size={size}
 
-                onPress={() => { props.navigation.navigate('Drawer1') }}
-                label='Register User '
-              />
+                />
+              )}
+              style={styles.Text}
 
-             
-             
+              onPress={() => { props.navigation.navigate('Drawer1') }}
+              label='Register User '
+            />
 
 
-           
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icon
+                  name="message-video"
+                  color='brown'
+                  size={size}
+
+                />
+              )}
+              style={styles.Text}
+
+              onPress={() => { props.navigation.navigate('Player') }}
+              label='Video Player '
+            />
+
+
+
+
+
+
 
           </Drawer.Section>
 
@@ -112,7 +128,7 @@ export function DrawerContent(props) {
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
-      
+
       </Drawer.Section>
 
     </View>
@@ -134,15 +150,15 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    color:'white',
-    marginTop:'-15%',
-    marginLeft:'10%'
+    color: 'white',
+    marginTop: '-15%',
+    marginLeft: '10%'
   },
   caption: {
     fontSize: 20,
     fontWeight: 'bold',
-    color:'white',
-    marginLeft:'10%'
+    color: 'white',
+    marginLeft: '10%'
   },
   row: {
     marginTop: 20,
